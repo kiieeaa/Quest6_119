@@ -36,3 +36,32 @@ import androidx.compose.ui.unit.dp
 import com.example.praktikum8.R
 
 @OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FormSiswa(
+    pilihanJK: List<String>,
+    onSubmitButtonClicked: (MutableList<String>) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    var txtNama by rememberSaveable { mutableStateOf("") }
+    var txtAlamat by rememberSaveable { mutableStateOf("") }
+    var txtGender by rememberSaveable { mutableStateOf("") }
+    val listData: MutableList<String> = mutableListOf(txtNama,txtGender,txtAlamat)
+
+    Scaffold(
+        modifier = modifier,
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(id = R.string.app_name), color = Color.White) },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = colorResource(id = R.color.purple_500)
+                )
+            )
+        }
+    ) { innerPadding ->
+        Column(
+            modifier = Modifier
+                .padding(innerPadding)
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.Top,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
